@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # Redis Service
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  # Django Application Service
+  django:
+    build: .
+    container_name: django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    networks:
+      - app-network
+
+  # Celery Worker Service
+  celery:
+    build: .
+    container_name: celery
+    command: celery -A selteq_task worker --loglevel=info
+    depends_on:
+      - redis
+    networks:
+      - app-network
+
+  # Celery Beat Service (For Scheduled Tasks)
+  celery_beat:
+    build: .
+    container_name: celery_beat
+    command: celery -A selteq_task beat --loglevel=info
+    depends_on:
+      - redis
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

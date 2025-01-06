@@ -15,10 +15,6 @@ venv/
 .env/
 .venv/
 
-# Docker
-docker-compose.override.yml
-docker-compose.yml
-
 # Misc
 *.swp
 *.swo
