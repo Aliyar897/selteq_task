@@ -9,12 +9,46 @@ __pycache__/
 *.pot
 *.pyc
 *.sqlite3
+db.sqlite3
+media/
+staticfiles/
 
 # Virtual environment
-venv/
-.env/
-.venv/
+myenv/
+.myenv/
+.myenv/
 
-# Misc
+# Environment variables
+.myenv
+*.myenv
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Miscellaneous
 *.swp
 *.swo
+.DS_Store
+Thumbs.db
+
+# Migrations
+*/migrations/*
+
+# Ignore compiled assets
+static/
+node_modules/
+
+# Ignore coverage and testing files
+.coverage
+coverage.xml
+nosetests.xml
+pytest.xml
+*.cover
+.hypothesis/
+.tox/
+*.pyc
+*.pyo
+.pytest_cache/
