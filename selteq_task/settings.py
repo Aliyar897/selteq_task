@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from datetime import timedelta
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -96,30 +95,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'selteq_task.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'sql_server.pyodbc',  # This is for SQL Server
-#         'NAME': 'selteq_task',  # Replace with your actual database name
-#         'USER': 'admin',  # SQL Server admin user
-#         'PASSWORD': 'admin12345',  # SA password defined in docker-compose.yml
-#         'HOST': 'db',  # Name of the database service in your docker-compose.yml
-#         'PORT': '1433',  # SQL Server default port
-#         'OPTIONS': {
-#             'driver': 'ODBC Driver 17 for SQL Server',  # Driver for connecting to SQL Server
-#             'extra_params': 'TrustServerCertificate=yes;',  # Optional extra parameter to avoid SSL verification issues
-#         },
-#     }
-# }
-
-# Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'taskdb',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -141,31 +135,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Celery Configuration
 # Celery Configuration
-CELERY_BROKER_URL = 'redis://redis:6379/0'  # Use 'redis' as the service name
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'  # Use 'redis' as the service name
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # or 'redis://redis:6379/0' if using Docker
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 # Optional configurations to fine-tune the task execution
 CELERY_ACCEPT_CONTENT = ['json']

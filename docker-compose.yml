@@ -1,49 +1,83 @@
-version: '3.8'
+version: "3.9"
 
 services:
-  # Redis Service
-  redis:
-    image: redis:latest
-    container_name: redis
-    ports:
-      - "6379:6379"
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: taskdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
-      - app-network
+      - app_network
 
-  # Django Application Service
+  redis:
+    image: "redis:latest"
+    networks:
+      - app_network
+
   django:
     build: .
-    container_name: django
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn selteq_task.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     depends_on:
+      - postgres
       - redis
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=taskdb
+      - DB_USER=postgres
+      - DB_PASSWORD=12345
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     networks:
-      - app-network
+      - app_network
 
-  # Celery Worker Service
   celery:
     build: .
-    container_name: celery
-    command: celery -A selteq_task worker --loglevel=info
+    command: celery -A selteq_task worker --pool=solo --loglevel=info
+    volumes:
+      - .:/app
     depends_on:
       - redis
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=taskdb
+      - DB_USER=postgres
+      - DB_PASSWORD=12345
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     networks:
-      - app-network
+      - app_network
 
-  # Celery Beat Service (For Scheduled Tasks)
-  celery_beat:
+  celery-beat:
     build: .
-    container_name: celery_beat
     command: celery -A selteq_task beat --loglevel=info
+    volumes:
+      - .:/app
     depends_on:
       - redis
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=taskdb
+      - DB_USER=postgres
+      - DB_PASSWORD=12345
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     networks:
-      - app-network
+      - app_network
 
 networks:
-  app-network:
-    driver: bridge
+  app_network:
+
+volumes:
+  postgres_data:
