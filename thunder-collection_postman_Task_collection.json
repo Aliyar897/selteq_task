@@ -1,0 +1,244 @@
+{
+    "info": {
+        "_postman_id": "7eb1ce47-7d60-477b-bd0c-82f33aa4e7a2",
+        "name": "Task_collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Add Tasks",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/tasks/",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MjcyNDczLCJpYXQiOjE3MzYyNzIxNzMsImp0aSI6ImZjMmMxMzU1Y2UxNzRjZGRhYzQwNjQ5N2U3ZTJmODY4IiwidXNlcl9pZCI6MX0.3wxJFFaO48pArgyZQi1gko218Xzu1X4M4RDuoDMxWHM"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n    \"title\": \"Task 456dfdfdfdfd4564tyryrty5673465\",\n    \"duration\": \"3\"\n}\n"
+                }
+            }
+        },
+        {
+            "name": "Get Tasks List",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/tasks/list/",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "list"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MjcwNzQ4LCJpYXQiOjE3MzYyNzA0NDgsImp0aSI6IjE1OWZjZjVkM2Q1NjRmZTY4OTgxOGZhMTQ1YzE1MGRlIiwidXNlcl9pZCI6MX0.2wLHKZh6A78bk_de6TE-jKRx2bgcwn6GgZ58u26lq9E"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Add Tasks",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/tasks/",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MjcyNDczLCJpYXQiOjE3MzYyNzIxNzMsImp0aSI6ImZjMmMxMzU1Y2UxNzRjZGRhYzQwNjQ5N2U3ZTJmODY4IiwidXNlcl9pZCI6MX0.3wxJFFaO48pArgyZQi1gko218Xzu1X4M4RDuoDMxWHM"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n    \"title\": \"Task 456dfdfdfdfd4564tyryrty5673465\",\n    \"duration\": \"3\"\n}\n"
+                }
+            }
+        },
+        {
+            "name": "Delete Task",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/tasks/delete/2/",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "delete",
+                        "2"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTgyNTE4LCJpYXQiOjE3MzYxODIyMTgsImp0aSI6IjZlNTkzNDQyMTEwYjQyZGU5MGRmYmFhMzU4ODRkMGRiIiwidXNlcl9pZCI6MX0.CcAt0ceAM2cX_b_dzHjhAHOb8WW9n1q76KSm1Jm9NM0"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Update Title",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/tasks/update/5/",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "update",
+                        "5"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTgyNTE4LCJpYXQiOjE3MzYxODIyMTgsImp0aSI6IjZlNTkzNDQyMTEwYjQyZGU5MGRmYmFhMzU4ODRkMGRiIiwidXNlcl9pZCI6MX0.CcAt0ceAM2cX_b_dzHjhAHOb8WW9n1q76KSm1Jm9NM0"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\r\n    \"title\": \"Task 100000\"\r\n}\r\n"
+                }
+            }
+        },
+        {
+            "name": "Access Protected Endpoints",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/protected/",
+                    "path": [
+                        "api",
+                        "protected"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTgwNTYzLCJpYXQiOjE3MzYxODAyNjMsImp0aSI6ImZiNDcyMjJmMmMzNDQyNjg5MTdjOTJlNTA0YTE0NDQ4IiwidXNlcl9pZCI6MX0.6vzAoRJG7aT7NANpwe9OEiALUYlCqLh1ZgmFxGBxIR0"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Get token",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/token/",
+                    "path": [
+                        "api",
+                        "token"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MTgwNDY1LCJpYXQiOjE3MzYxODAxNjUsImp0aSI6ImM3YTEzZWE3ZTI0YTQwNDc5Zjg2YmEwNWQyYjU3N2MwIiwidXNlcl9pZCI6MX0.uTd6BApyXnQzF2ErwWslGVpCRlO0E_nFTi1KPLqozGY"
+                    }
+                ],
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "username",
+                            "value": "admin"
+                        },
+                        {
+                            "key": "password",
+                            "value": "12345"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
